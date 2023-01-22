@@ -1,3 +1,50 @@
 h1 {
-  color: blue;
+  color: red;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 50px;
+  margin: 0;
+  padding: 0;
+}
+
+h2 {
+  font-size: 20px;
+  color: purple;
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+h3 {
+  text-transform: capitalize;
+}
+
+body {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 20px;
+  border: 1px solid;
+  background-color: aqua;
+}
+
+.current-conditions {
+  font-family: "IBM Plex Sans", sans-serif;
+
+  list-style: none;
+  position: relative;
+  top: -50px;
+  text-align: left;
+}
+
+.today-temp strong {
+  font-size: 40px;
+}
+
+.temp-unit {
+  position: relative;
+  font-size: 16px;
+  top: -17px;
+}
+
+.code {
+  font-size: 15px;
+  position: relative;
+  bottom: -70px;
 }

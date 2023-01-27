@@ -38,13 +38,11 @@ function displayTemperature(response) {
 function search(city) {
   let apiUrl =
     "https://api.shecodes.io/weather/v1/current?query=Melbourne&key=5c0fbb0ef63ff3a8dac04t35bo0ed1e4&units=metric";
-
   console.log(apiUrl);
-
   axios.get(apiUrl).then(displayTemperature);
 }
+search("Paris");
 
-search("paris");
 function handleSearch(event) {
   event.preventDefault();
   let cityInputElement = document.querySelector("#city-input");

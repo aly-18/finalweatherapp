@@ -48,3 +48,15 @@ body {
   position: relative;
   bottom: -70px;
 }
+
+.temp-unit .active {
+  color: black;
+  cursor: default;
+  text-decoration: none;
+}
+
+.temp-unit .active:hover {
+  text-decoration: underline;
+  cursor: grab;
+  color: purple;
+}

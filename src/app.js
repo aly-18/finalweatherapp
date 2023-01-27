@@ -59,6 +59,8 @@ form.addEventListener("submit", handleSearch);
 function displayCelcius(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#current-temp");
+  farenLink.classList.add("active");
+  celciusLink.classList.remove("active");
   temperatureElement.innerHTML = Math.round(celciusTemp);
 }
 
@@ -70,6 +72,8 @@ celciusLink.addEventListener("click", displayCelcius);
 function displayFaren(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#current-temp");
+  celciusLink.classList.add("active");
+  farenLink.classList.remove("active");
   let farenTemp = (celciusTemp * 9) / 5 + 32;
   temperatureElement.innerHTML = Math.round(farenTemp);
 }

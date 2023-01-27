@@ -11,7 +11,7 @@ function formatDate(timestamp) {
   ];
   let day = days[date.getDay()];
   let hours = date.getHours();
-  if (hours < 12) {
+  if (hours < 10) {
     hours = "0" + hours;
   }
   let minutes = date.getMinutes();
@@ -41,10 +41,11 @@ function displayTemperature(response) {
 
 function search(city) {
   let apiUrl =
-    "https://api.shecodes.io/weather/v1/current?query=Melbourne&key=5c0fbb0ef63ff3a8dac04t35bo0ed1e4&units=metric";
+    "https://api.shecodes.io/weather/v1/current?query=${city}&key=5c0fbb0ef63ff3a8dac04t35bo0ed1e4&units=metric";
   console.log(apiUrl);
   axios.get(apiUrl).then(displayTemperature);
 }
+
 search("Paris");
 
 function handleSearch(event) {

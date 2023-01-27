@@ -11,6 +11,9 @@ function formatDate(timestamp) {
   ];
   let day = days[date.getDay()];
   let hours = date.getHours();
+  if (hours < 12) {
+    hours = "0" + hours;
+  }
   let minutes = date.getMinutes();
   if (minutes < 10) {
     minutes = "0" + minutes;
@@ -20,7 +23,8 @@ function formatDate(timestamp) {
 
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#current-temp");
-  temperatureElement.innerHTML = Math.round(response.data.temperature.current);
+  celciusTemp = response.data.temperature.current;
+  temperatureElement.innerHTML = Math.round(celciusTemp);
   let cityElement = document.querySelector("#city");
   cityElement.innerHTML = response.data.city;
   let descriptionElement = document.querySelector("#description");
@@ -49,5 +53,26 @@ function handleSearch(event) {
   console.log(cityInputElement.value);
 }
 
-let form = document.querySelector("form");
+let form = document.querySelector("#searchButton");
 form.addEventListener("submit", handleSearch);
+
+function displayCelcius(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#current-temp");
+  temperatureElement.innerHTML = Math.round(celciusTemp);
+}
+
+let celciusTemp = null;
+
+let celciusLink = document.querySelector("#celcius-unit");
+celciusLink.addEventListener("click", displayCelcius);
+
+function displayFaren(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#current-temp");
+  let farenTemp = (celciusTemp * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(farenTemp);
+}
+
+let farenLink = document.querySelector("#faren-unit");
+farenLink.addEventListener("click", displayFaren);

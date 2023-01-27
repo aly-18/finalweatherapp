@@ -21,7 +21,7 @@ body {
   margin: 30px auto;
   padding: 20px;
   border: 1px solid;
-  background-color: aqua;
+  background: linear-gradient(to top, #cd9cf2 0%, #f6f3ff 100%);
 }
 
 .current-conditions {

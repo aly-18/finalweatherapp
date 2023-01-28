@@ -45,7 +45,7 @@ function search(city) {
   axios.get(apiUrl).then(displayTemperature);
 }
 
-search("New York");
+search("Hobart");
 function handleSearch(event) {
   event.preventDefault();
   let cityInputElement = document.querySelector("#city-input");

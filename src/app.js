@@ -25,7 +25,7 @@ function displayTemperature(response) {
   let temperatureElement = document.querySelector("#current-temp");
   celciusTemp = response.data.temperature.current;
   temperatureElement.innerHTML = Math.round(celciusTemp);
-  let cityElement = document.querySelector("#city");
+  let cityElement = document.querySelector("#current-city");
   cityElement.innerHTML = response.data.city;
   let descriptionElement = document.querySelector("#description");
   descriptionElement.innerHTML = response.data.condition.description;
@@ -40,19 +40,18 @@ function displayTemperature(response) {
 }
 
 function search(city) {
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=5c0fbb0ef63ff3a8dac04t35bo0ed1e4&units=metric`;
-  console.log(apiUrl);
+  let apiKey = "5c0fbb0ef63ff3a8dac04t35bo0ed1e4";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayTemperature);
 }
 
-search("Hobart");
 function handleSearch(event) {
   event.preventDefault();
   let cityInputElement = document.querySelector("#city-input");
-  console.log(cityInputElement.value);
+  search(cityInputElement.value);
 }
 
-let form = document.querySelector("#searchButton");
+let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSearch);
 
 function displayCelcius(event) {
@@ -79,3 +78,5 @@ function displayFaren(event) {
 
 let farenLink = document.querySelector("#faren-unit");
 farenLink.addEventListener("click", displayFaren);
+
+search("Hobart");

@@ -19,14 +19,16 @@
     <div class="container text-center">
       <div class="row">
         <div class="col">
-          <h1 id="city">Tokyo</h1>
+          <h1 id="current-city">Tokyo</h1>
           <h2 id="date">Sunday 24</h2>
-        <div class="row">
-          <div class="col-9"><input type="search" placeholder="Type a city" class="form-control" id="city-input"> </div>
+       <form id="search-form">
+          <div class="row">
+          <div class="col-9"><input type="search" placeholder="Type a city" class="form-control" id="city-input" autocomplete="off"> </div>
         <div class="col-3">
           <input type="submit" id="searchButton"value="Search"></div>
       </div>  
       </div>
+      </form>
         <div class ="col-6">
           <h4 class="today-temp"><strong id="current-temp">23</strong> 
             <span class="temp-unit"> 

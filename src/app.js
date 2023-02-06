@@ -21,6 +21,29 @@ function formatDate(timestamp) {
   return day + " " + hours + ":" + minutes;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#weather-forecast");
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tues"];
+
+  let forecastHTML = `<div class= "row">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      ` <div class="col-2">
+        <div class="col"> ${day} </div>
+        <img
+        src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+        width="42" />
+    <div class="col" id="weather-forecast-temp">
+      <span>23</span>
+      <span>19</span>
+    </div>
+  </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#current-temp");
   celciusTemp = response.data.temperature.current;
@@ -80,3 +103,5 @@ let farenLink = document.querySelector("#faren-unit");
 farenLink.addEventListener("click", displayFaren);
 
 search("Hobart");
+
+displayForecast();

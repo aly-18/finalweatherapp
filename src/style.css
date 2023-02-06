@@ -60,3 +60,8 @@ body {
   cursor: grab;
   color: purple;
 }
+
+.future-weather {
+  margin-top: 20px;
+  text-align: center;
+}

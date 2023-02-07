@@ -18,36 +18,46 @@ function formatDate(timestamp) {
   if (minutes < 10) {
     minutes = "0" + minutes;
   }
-  return day + " " + hours + ":" + minutes;
+  return `${day} ${hours}:${minutes}`;
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Mon", "Tues", "Wed", "Thu", "Fri", "Sat", "Sun"];
+
+  return days[day];
+}
 function displayForecast(response) {
-  console.log(response.data);
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#weather-forecast");
-  let days = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tues"];
 
   let forecastHTML = `<div class= "row">`;
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      ` <div class="col-2">
-        <div class="col"> ${day} </div>
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        ` <div class="col-2">
+        <div class="col"> ${formatDay(forecastDay.time)} </div> 
         <img
-        src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+        src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
+          forecastDay.condition.icon
+        }.png"
         width="42" />
     <div class="col" id="weather-forecast-temp">
-      <span>23</span>
-      <span>19</span>
+      <span> ${Math.round(forecastDay.temperature.maximum)} ℃ </span>
+      <span>${Math.round(forecastDay.temperature.minimum)}℃</span>
     </div>
   </div>`;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
 
 function getForecast(coordinates) {
-  let apiKey = "5c0fbb0ef63ff3a8dac04t35bo0ed1e4&units";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}=metric`;
+  let apiKey = "5c0fbb0ef63ff3a8dac04t35bo0ed1e4";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=metric`;
 
   axios.get(apiUrl).then(displayForecast);
 }

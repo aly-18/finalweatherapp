@@ -45,7 +45,8 @@ function displayForecast(response) {
         }.png"
         width="42" />
     <div class="col" id="weather-forecast-temp">
-      <span> ${Math.round(forecastDay.temperature.maximum)} ℃ </span>
+      <span> ${Math.round(forecastDay.temperature.maximum)}℃ </span>
+      <br/>
       <span>${Math.round(forecastDay.temperature.minimum)}℃</span>
     </div>
   </div>`;
@@ -122,6 +123,6 @@ function displayFaren(event) {
 let farenLink = document.querySelector("#faren-unit");
 farenLink.addEventListener("click", displayFaren);
 
-search("Hobart");
+search("Tokyo");
 
 displayForecast();
